@@ -1,19 +1,20 @@
-## StarterApp with 3rd Party login
+# {{appTitleService.appName}} with 3rd Party login
 
-This is a distant cousin of [QuickApp](https://github.com/emonney/QuickApp) by Eben Money.
+## It uses the MS**SQ**l, **A**ngular, and .**N**et core stack to get you started.
 
-It has alot stripped out but does implement 3rd party log ins which was missing from QuickApp. It also keeps the user management features.
+*This is a distant cousin of [QuickApp](https://github.com/emonney/QuickApp) by Eben Money.*
 
-Check out the [demo app](https://demoapp.tekonline.com.au) for a live run of this app.
+*The idea is you can pull it, run it in a docker stack and get started quick!*
 
-Pull requests welcome! [Checkout the pull requests](https://github.com/jonmosco/StarterApp/pulls) and [log an issue](https://github.com/jonmosco/StarterApp/issues).
+---
 
-### Ready to use
+## Ready to use
 
-Just pull it down from git and run 
+Just pull it down from git and run
 
 docker-compose -f docker-compose.dev.yml up
 
-### Support
+
+## Support
 
 If you need any help, please reach out to me at [jon@tekonline.com.au](mailto:jon@tekonline.com.au), or head over to [www.tekonline.com.au](http://www.tekonline.com.au)
