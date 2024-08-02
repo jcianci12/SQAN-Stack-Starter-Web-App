@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <header class="pageHeader">
+        <h3>
+          <i class="fa fa-cog fa-lg page-caption" aria-hidden="true"></i>
+          {{ 'pageHeader.Settings' | translate }}
+        </h3>
+      </header>
+
+      <tabset>
+        <tab heading="{{ 'settings.header.UserProfile' | translate }}">
+          <app-user-info></app-user-info>
+        </tab>
+        <tab heading="{{ 'settings.header.UserPreferences' | translate }}">
+          <app-user-preferences></app-user-preferences>
+        </tab>
+        <tab
+          *ngIf="canViewUsers"
+          heading="{{ 'settings.header.UsersManagements' | translate }}"
+        >
+          <app-users-management></app-users-management>
+        </tab>
+        <tab
+          *ngIf="canViewRoles"
+          heading="{{ 'settings.header.RolesManagement' | translate }}"
+        >
+          <app-roles-management></app-roles-management>
+        </tab>
+      </tabset>
+    </div>
+  </div>
+</div>

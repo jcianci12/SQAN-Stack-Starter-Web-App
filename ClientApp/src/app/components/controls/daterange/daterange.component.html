@@ -1,0 +1,19 @@
+<ng-container *ngIf="!expanded">
+  <mat-form-field class="example-full-width">
+    <mat-label>When would you like to hire?</mat-label>
+    <mat-date-range-input [rangePicker]="picker" [dateFilter]="rangeFilter" [min]="now">
+      <input required matStartDate placeholder="Start date" name="startOfHire" ngModel>
+      <input required matEndDate placeholder="End date" name="endOfHire" ngModel>
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+</ng-container>
+
+<ng-container *ngIf="expanded">
+  <mat-label>Bookings</mat-label>
+  <mat-calendar [dateClass]="dateClass"  [dateFilter]="rangeFilter"></mat-calendar>
+
+
+</ng-container>
+{{bookeddates|json}}

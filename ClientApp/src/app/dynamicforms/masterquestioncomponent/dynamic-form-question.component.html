@@ -1,0 +1,54 @@
+<ng-container [formGroup]="form">
+  <ng-container [ngSwitch]="question.controlType">
+    <!-- Simple -->
+    <ng-container *ngSwitchCase="'textbox'">
+      <app-textinput [question]=question [form]=form [required]=required></app-textinput>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'decimal'">
+      <app-decimalinput [form]=form [question]=question></app-decimalinput>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'numbertextbox'" class="">
+      <app-numberfield [form]=form [question]=question></app-numberfield>
+    </ng-container>
+
+    <mat-form-field *ngSwitchCase="'textarea'" class="">
+      <textarea rows=10 matInput [formControlName]="question.key" [placeholder]=question.label></textarea>
+    </mat-form-field>
+
+    <ng-container *ngSwitchCase="'WYSIWYG'" class="">
+      <app-wysiwygfield [form]=form [question]=question [required]=required></app-wysiwygfield>
+    </ng-container>
+
+
+    <ng-container *ngSwitchCase="'hiddentextbox'" class="">
+      <app-hiddenfield [form]=form [question]=question></app-hiddenfield>
+    </ng-container>
+    
+    <!-- options -->
+
+    <!-- <div *ngSwitchCase="'checkbox'">
+      <mat-checkbox [formControlName]="question.key" [labelPosition]="">{{question.label}}</mat-checkbox>
+    </div> -->
+    <!-- Dates + Time -->
+
+    <div *ngSwitchCase="'timespan'">
+      <app-timespan [question]=question [form]=form [required]=required></app-timespan>
+    </div>
+
+    <div *ngSwitchCase="'datepicker'" class="">
+      <app-date-picker [question]=question [form]=form [required]=required></app-date-picker>
+    </div>
+
+
+
+    
+    <div *ngSwitchCase="'formsubgroup'">
+
+    </div>
+
+  </ng-container>
+
+  <!-- <div class="errorMessage" *ngIf="!isValid">{{question.label}} is required</div> -->
+</ng-container>

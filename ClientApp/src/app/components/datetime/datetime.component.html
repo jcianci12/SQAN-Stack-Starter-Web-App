@@ -1,0 +1,25 @@
+
+<div class="row">
+  <div class="col">
+    <mat-form-field class="full-width" >
+      <mat-label>{{text}}</mat-label>
+      <input  matInput [min]="min" [max]="max"  [matDatepicker]="startpicker" [(ngModel)]="dateproperty">
+      <mat-datepicker-toggle matSuffix [for]="startpicker"></mat-datepicker-toggle>
+      <mat-datepicker #startpicker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="col">
+
+    <mat-form-field style="width: 45%;" >
+      <mat-label>Time</mat-label>
+      <input matInput placeholder="hours" type="time" [(ngModel)]="time" >
+    </mat-form-field>
+
+    <!-- <span style="width: 10%;">:</span> -->
+    <!-- <mat-form-field style="width: 45%;" >
+      <mat-label>Minutes</mat-label>
+      <input matInput disabled placeholder="minutes" type="time"  [(ngModel)]="minutes" >
+    </mat-form-field> -->
+
+  </div>
+</div>

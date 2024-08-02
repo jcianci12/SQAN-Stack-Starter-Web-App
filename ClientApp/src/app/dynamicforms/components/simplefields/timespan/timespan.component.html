@@ -1,0 +1,17 @@
+<mat-form-field [formGroup]=form class="full-width">
+  <mat-label>{{question.label}}</mat-label>
+  <input matInput  [formControlName]="(question.key)" [placeholder]="(question.label)"
+     [errorStateMatcher]=matcher>
+  <mat-error>
+    <div *ngIf="question.key=='minimumHirePeriodInHours'">
+      <div *ngIf="form.get('minimumHirePeriodInHours')!.value>form.get('maximumHirePeriodInHours')!.value">
+        Minimum hire time cant be larger than the maximum hire time
+      </div>
+    </div>
+    <div *ngIf="question.key=='maximumHirePeriodInHours'">
+      <div *ngIf="form.get('minimumHirePeriodInHours')!.value>form.get('maximumHirePeriodInHours')!.value">
+        Maximum hire time cant be smaller than the minimum hire time
+      </div>
+    </div>
+  </mat-error>
+</mat-form-field>

@@ -1,0 +1,10 @@
+<mat-form-field class="full-width">
+  <mat-label>Location</mat-label>
+  <input matInput required placeholder="Your location" name=locationString ngModel #locationstringfield ngx-google-places-autocomplete [options]="options"
+    (onAddressChange)="handleAddressChange($event)" />
+  <button matSuffix mat-icon-button (click)="getmylocation($event)">
+    <mat-icon matTooltip="Get my location"> location_on</mat-icon>
+  </button>
+  <mat-progress-spinner *ngIf="loading==true" matPrefix [diameter]="15" [mode]="'indeterminate'"></mat-progress-spinner>
+</mat-form-field>
+

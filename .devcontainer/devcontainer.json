@@ -1,0 +1,34 @@
+// Devcontainer
+{
+    "name": "We hire it",
+    "dockerComposeFile": "./docker-compose.yml",
+    "service": "app",
+    "workspaceFolder": "/usr/local/DOCKERWEHIREIT",
+    "runArgs": ["--init"],
+    // "forwardPorts": [4200],
+    // "postStartCommand": "cd Aspnetcoreapp/Clientapp && npm start"
+}
+// //Dockerfile
+// # Stage 1: Compile and Build angular codebase
+
+// # Use official node image as the base image
+// FROM node:16.13.2 as angularbuild
+
+// # Set the working directory
+// WORKDIR /usr/local/DOCKERWEHIREIT
+
+// # Start the application using ng serve
+// # CMD npm install && npm start
+
+// // docker-compose:
+// version: '3.8'
+// services:
+//   app:
+//     build:
+//       context: ../Aspnetcoreapp/ClientApp
+//       dockerfile: Dockerfile
+//     ports:
+//       - "4200:4200"
+//     volumes:
+//       - ../:/usr/local/DOCKERWEHIREIT
+//     # command: ["npm", "start"]

@@ -1,0 +1,28 @@
+
+        <div *ngIf="questions">
+            <form (ngSubmit)="onSubmit()" [formGroup]=form>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div *ngFor="let question of questions" [ngClass]=question.style>
+                                <app-question [required]=question.required [editmode]=editmode [question]="question" [form]=form>
+                                </app-question>
+
+                            </div>
+                        </div>
+                    </div>
+
+                        <button type="submit" mat-raised-button color="primary" [disabled]="(!form.valid)">
+                            <ng-container *ngIf="saving ==true; else elseTemplate">
+                                <mat-spinner></mat-spinner>
+                            </ng-container>
+                            <ng-template #elseTemplate>
+                                Save
+                            </ng-template>
+                        </button>
+
+
+            </form>
+
+
+        </div>
+  

@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  db:
+    build: ./Db
+    ports:
+      - 1433:1433
+    volumes:
+      - ./Db/data:/var/opt/mssql/data
+    user: "0:0"
+    restart: unless-stopped
+    networks:
+      - host
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - 5000:5000
+    volumes:
+      - ./Aspnetcoreapp/resources:/app/Aspnetcoreapp/resources
+      - ./Aspnetcoreapp/wwwroot:/app/Aspnetcoreapp/wwwroot
+      - ${APPDATA}\microsoft\UserSecrets\:/root/.microsoft/usersecrets
+      - ${USERPROFILE}\.aspnet\https:/root/.aspnet/https/
+    environment:
+      ASPNETCORE_URLS: "http://*:5000"
+      ASPNETCORE_ENVIRONMENT: Development
+      Application_URL: "http://localhost:5000"
+    restart: unless-stopped
+    depends_on:
+      - db
+    networks:
+      - host
+
+  angularapp:
+    build:
+      context: ./ClientApp
+      dockerfile: Dockerfile.Development
+    ports:
+      - 4200:4200
+    volumes:
+      - ./ClientApp:/app
+    networks:
+      - host
+
+networks:
+  host:

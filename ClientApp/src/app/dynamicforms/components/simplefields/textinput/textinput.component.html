@@ -1,0 +1,4 @@
+<mat-form-field [hidden]="question!.hiddenfield" [formGroup]=form  class="full-width-field" >
+    <input matInput [required]=question.required [formControlName]="(question.key)" [placeholder]="(question.label)" [pattern]="question.regex">
+
+</mat-form-field>

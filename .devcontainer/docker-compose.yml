@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: ../Aspnetcoreapp/ClientApp
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+      - "6000:6000"
+    volumes:
+      - ../:/usr/local/DOCKERWEHIREIT
+    # command: /bin/sh -c "npm i && npm start"    
+    # command: ["npm", "start"]
+# # Stage 1: Compile and Build angular codebase
+
+# # Use official node image as the base image
+# FROM node:latest as angularbuild
+
+# # Set the working directory
+# # Copy package.json and package-lock.json
+# COPY package*.json ./
+
+# # Install all the dependencies
+# RUN npm install
+# RUN npm install -g @angular/cli
+# # Copy the rest of your app's source code
+# COPY . .
+# WORKDIR /usr/local/DOCKERWEHIREIT/Aspnetcoreapp/ClientApp
+# # Start the application using ng serve
+# CMD tail -f /dev/null
+
+# // Devcontainer
+# {
+#     "name": "We hire it",
+#     "dockerComposeFile": "./docker-compose.yml",
+#     "service": "app",
+#     "workspaceFolder": "/usr/local/DOCKERWEHIREIT",
+#     "runArgs": ["--init"],
+#     "forwardPorts": [4200],
+#     // "postStartCommand": "cd Aspnetcoreapp/Clientapp && npm start"
+# }

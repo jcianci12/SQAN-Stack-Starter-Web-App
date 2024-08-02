@@ -1,0 +1,47 @@
+{
+  // For more information, visit: https://go.microsoft.com/fwlink/?LinkId=733558
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "start server",
+      "type": "npm",
+      "script": "start",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "isBackground": true,
+      "options": {
+        "env": {
+          // Ensures that react-scripts does not open a browser.
+          "BROWSER": "none"
+        }
+      },
+      "problemMatcher": {
+        "pattern": {
+          // This is not needed but, required by the problemMatcher Object
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Compiling...",
+          // Ensures that browser is only opened after the task is completed.
+          "endsPattern": "Compiled successfully."
+        }
+      }
+    },
+    {
+      "label": "stop server",
+      "command": "echo ${input:terminate}",
+      "type": "shell"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "terminate",
+      "type": "command",
+      "command": "workbench.action.tasks.terminate",
+      "args": "terminateAll"
+    }
+  ]
+}

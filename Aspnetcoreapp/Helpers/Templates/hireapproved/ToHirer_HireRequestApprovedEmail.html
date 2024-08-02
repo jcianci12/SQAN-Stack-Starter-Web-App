@@ -1,0 +1,72 @@
+﻿<!-- .Replace("{vendorname}", vendorname)
+                .Replace("{vendoremail}", vendoremail)
+                .Replace("{clientname}", clientname)
+                .Replace("{clientemail}", clientemail)
+                .Replace("{item}", item)
+                .Replace("{startdate}", startdate)
+                .Replace("{enddate}", enddate)
+                .Replace("{hours}", hours)
+                .Replace("{price}", price)
+                .Replace("{total}", total); -->
+
+                <p>Hello {vendorname},</p>
+                <p>This is an alert from We Hire It to confirm you have approved the hire request to 
+                    <strong>{clientname}</strong>.
+                </p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                Item:
+                            </th>
+                            <td>{item}</td>
+                
+                        </tr>
+                        <tr>
+                            <th>Price per hour:
+                            </th>
+                            <td>
+                                ${price}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Start of hire:
+                            </th>
+                            <td>
+                                {startdate}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>End of hire:
+                            </th>
+                            <td>
+                                {enddate}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Total Hours
+                            </th>
+                            <td>
+                                {hours}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Total Price
+                            </th>
+                            <td>
+                                ${total}
+                            </td>
+                        </tr>
+                    </thead>
+                </table>               
+                
+                <p>We will notify you once payment has been recieved.</p>
+                
+                <a href="https://www.wehireit.com.au">We Hire It</a>
+                
+                <p><br /></p>
+                <p>Regards,</p>
+                <p>We Hire It</p>

@@ -1,0 +1,20 @@
+export interface columnDefinition {
+    "No."?: string,
+    Activity: string,
+    "Contact Name?": string,
+    Relationship?: string,
+    'DOB': string,
+    'Relationship with case': string,
+    'Contact Details': string,
+    'Suburb': string,
+    'Contact Dates': string,
+    'Occupation': string,
+    'Vaccinated - dose number and date': string,
+    'Immunocompromised/pregnant': string,
+    'GP name (if known)': string,
+    'GP contact details': string,
+    'Symptomatic (provide details)': string,
+    'PHU contact': string,
+    'Details of recommendation': string,
+    'Comments': string
+}

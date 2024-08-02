@@ -1,0 +1,163 @@
+<div class="container " [@fadeInOut]>
+  <form #registerform="ngForm"> 
+ <div class="row">
+    <div class="col">
+      <mat-card>
+        <mat-card-title>
+          <h3>Register</h3>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <p>Please fill out your details and click register to sign up to use We Hire It!</p>
+          <p>Already regsitered? Log in here <button routerLink="/login" mat-raised-button>Log in</button>
+            <!-- <button (click)=autofill() mat-raised-button>Auto Fill</button> -->
+
+        </mat-card-subtitle>
+        <mat-card-content>
+          <mat-vertical-stepper #stepper>
+            <mat-step [stepControl]="nameFormGroup">
+              <form [formGroup]="nameFormGroup">
+                <ng-template matStepLabel>Please enter your first and last name</ng-template>
+                <mat-form-field class="full-width">
+                  <mat-label>First Name</mat-label>
+                  <input matInput formControlName=firstName placeholder="First name" required>
+                  <mat-error>Please enter your first name</mat-error>
+
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                  <mat-label>Surname</mat-label>
+                  <input matInput formControlName="surname" placeholder="Surname" required>
+                  <mat-error>Please enter your surname</mat-error>
+
+                </mat-form-field>
+                <div>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="contactDetailsFormGroup">
+              <form [formGroup]="contactDetailsFormGroup">
+                <ng-template matStepLabel>Please enter your contact details</ng-template>
+                <mat-form-field>
+                  <mat-label>Title</mat-label>
+                  <input matInput formControlName="positionDescription" placeholder="" required>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Work Phone</mat-label>
+                  <input matInput formControlName="workPhone" placeholder="" required>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Email</mat-label>
+                  <input matInput [formControl]="emailFormControl" placeholder="" required>
+                  <mat-error>Please enter a valid email</mat-error>
+                </mat-form-field>
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="DetailsFormGroup">
+              <form [formGroup]="DetailsFormGroup">
+                <ng-template matStepLabel>User name and password</ng-template>
+
+                <div class="row">
+
+                  <mat-form-field class="full-width">
+                    <mat-label>What would you like to use as your username?
+                    </mat-label>
+                    <input matInput formControlName="desiredAccountUserName" placeholder="" required>
+                  </mat-form-field>
+                </div>
+                <div class="row">
+
+                  <mat-form-field>
+                    <mat-label>Please enter a password you would like to use.
+                    </mat-label>
+                    <input matInput type="password" formControlName="password" placeholder="" required>
+                    <mat-error *ngIf="password!.hasError('required')">Password is required</mat-error>
+                    <mat-error *ngIf="DetailsFormGroup.hasError('minlength')">Password must have at least
+                      {{minimumPasswordLength}} characters</mat-error>
+
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Please confirm your password.
+                    </mat-label>
+                    <input matInput type="password" formControlName="passwordConfirm" placeholder="" required>
+                    <mat-error>Password doesnt match
+                    </mat-error>
+                  </mat-form-field>
+
+                </div>
+
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+
+
+            <mat-step>
+              <ng-template matStepLabel>Done!</ng-template>
+              <div class="row">
+                <div class="col">
+                  <h3>Here are your details, please check and once you are happy, please click register!</h3>
+
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="col">
+                  <ul>
+                    <li> First Name: {{firstName!.value}}
+                    </li>
+                    <li> Surname: {{surname!.value}}
+                    </li>
+                    <li> Position description: {{positionDescription!.value}}
+                    </li>
+                    <li> Work phone: {{workPhone!.value}}
+                    </li>
+                    <li> Email: {{email!.value}}
+                    </li>
+                    <li>
+                      My user name will be
+                      {{desiredAccountUserName!.value}}
+                    </li>
+                  </ul>
+                  <br>
+                  <br>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <button mat-button matStepperPrevious>Back</button>
+                  <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+                  <button type="button" (click)=register() [disabled]="!(nameFormGroup.valid&&contactDetailsFormGroup.valid&&emailFormControl.valid&&DetailsFormGroup.valid)" mat-button color="accent">Register</button>
+                </div>
+
+              </div>
+
+              <div class="row" *ngFor="let item of response|keyvalue">
+                <div class="row" *ngFor="let v of item|keyvalue">
+                  <div class="col">
+                    <ng-container >
+                      {{v.value}}
+                    </ng-container>
+                  </div>
+                </div>
+                
+              </div>
+            </mat-step>
+          </mat-vertical-stepper>
+        </mat-card-content>
+
+      </mat-card>
+
+    </div>
+
+  </div>
+
+
+  </form>
+ 
+</div>

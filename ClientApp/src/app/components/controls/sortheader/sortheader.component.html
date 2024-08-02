@@ -1,0 +1,31 @@
+
+
+<!-- <i class="fa" [ngClass]="{
+                  
+                  'fa-sort-asc': (sortingByField==columnPropertyName && sortOrder=='asc'),
+                  'fa-sort-desc': (sortingByField==columnPropertyName && sortOrder=='desc'),
+                  'fa-sort': (sortingByField!==columnPropertyName || sortOrder=='')
+}" (click)="childtoggleSort(columnPropertyName)">
+
+
+</i> -->
+<span (click)="childtoggleSort(columnPropertyName)">
+        {{columnDisplayName}}
+
+    <ng-container *ngIf="sortingByField==columnPropertyName && sortOrder=='asc'">
+        
+
+            <i class="fa fa-sort-up"></i>
+    </ng-container>
+    <ng-container *ngIf="sortingByField==columnPropertyName && sortOrder=='desc'">
+        <i class="fa fa-sort-down"></i>
+    </ng-container>
+    <ng-container *ngIf="sortingByField!==columnPropertyName || sortOrder==''">
+        <i class="fa fa-sort"></i>
+
+    </ng-container>
+</span>
+
+<!-- {{sortingByField|json}}
+{{columnPropertyName|json}}
+{{sortOrder|json}} -->

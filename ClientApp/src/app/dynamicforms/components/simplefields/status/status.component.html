@@ -1,0 +1,12 @@
+<div [formGroup]=form>
+    <mat-slide-toggle [color]="color" [checked]="(myControl.value==true)" [formControlName]="(question.key)"
+        (click)="syncSwitchToValue()">
+        This episode is
+        <ng-container *ngIf="myControl.value==true; else elseTemplate">
+            Open
+        </ng-container>
+        <ng-template #elseTemplate>
+            Closed
+        </ng-template>
+    </mat-slide-toggle>
+</div>

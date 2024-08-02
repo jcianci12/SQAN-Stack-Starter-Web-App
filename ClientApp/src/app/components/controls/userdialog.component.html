@@ -1,0 +1,25 @@
+
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 *ngIf="!data.editingUserName" class="modal-title float-left">
+        <i class="fa fa-user-plus"></i>
+        {{ 'users.management.NewUser' | translate }}
+      </h4>
+      <h4 *ngIf="data.editingUserName" class="modal-title float-left">
+        <i class="fa fa-user-circle-o"></i>
+        {{ 'users.management.EditUser' | translate: data.editingUserName }}
+      </h4>
+      <button
+        type="button"
+        class="close float-right"
+        title="Close"
+       
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <app-user-info #userEditor [isGeneralEditor]="true"></app-user-info>
+    </div>
+  </div>
+

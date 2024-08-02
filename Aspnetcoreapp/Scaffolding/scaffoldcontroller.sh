@@ -1,0 +1,1 @@
+dotnet aspnet-codegenerator controller -name HireController -async -api -m Booking -dc wehireitContext -outDir Controllers

@@ -1,0 +1,22 @@
+<!-- <main class="flex-shrink-0">
+      <router-outlet></router-outlet>
+  </main> -->
+<div class="container">
+  <div class="row  gy-2">
+    <div class="col-md-12">
+      <header>
+        <app-navbar [appTitle]="appTitle" [isUserLoggedIn]=isUserLoggedIn [userName]=userName></app-navbar>
+
+      </header>
+
+    </div>
+    <div class="col">
+      <router-outlet></router-outlet>
+
+    </div>
+  </div>
+
+</div>
+
+
+
