@@ -67,7 +67,7 @@ namespace Aspnetcoreapp
                 options.AddPolicy("AllowAll",
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:4200", "http://localhost:5000", "http://instance-20240412-1710:8090/", "https://wehireit.com.au", "https://www.wehireit.com.au")
+                        builder.WithOrigins("http://localhost:4200", "http://localhost:5000",  "https://demosqanapp.tekonline.com.au")
                             .AllowAnyHeader()
                             .AllowCredentials()
                             .AllowAnyMethod();

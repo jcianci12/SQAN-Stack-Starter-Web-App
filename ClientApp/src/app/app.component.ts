@@ -31,7 +31,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   shouldShowLoginModal!: boolean;
   removePrebootScreen!: boolean;
   newNotificationCount = 0;
-  appTitle = 'StarterApp';
+  appTitle = 'SQAN Stack 🦢';
 
   stickyToasties: number[] = [];
 
