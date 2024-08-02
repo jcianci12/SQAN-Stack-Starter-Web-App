@@ -1,4 +1,4 @@
-#🦢 SQAN Stack with 3rd Party login
+# 🦢 SQAN Stack with 3rd Party login
 
 ## It uses the MS**SQ**l, **A**ngular, and .**N**et core stack to get you started.
 
