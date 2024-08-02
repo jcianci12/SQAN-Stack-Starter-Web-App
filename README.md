@@ -1,16 +1,16 @@
-# {{appTitleService.appName}} with 3rd Party login
+#🦢 SQAN Stack with 3rd Party login
 
 ## It uses the MS**SQ**l, **A**ngular, and .**N**et core stack to get you started.
 
 *This is a distant cousin of [QuickApp](https://github.com/emonney/QuickApp) by Eben Money.*
 
-*The idea is you can pull it, run it in a docker stack and get started quick!*
+*The idea is you can pull it, run it in a docker stack and get started quick! 😉*
 
 ---
 
 ## Ready to use
 
-Just pull it down from git and run
+Just pull it down from git and run 👨‍💻
 
 docker-compose -f docker-compose.dev.yml up
 
