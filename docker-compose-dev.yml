@@ -21,8 +21,8 @@ services:
     volumes:
       - ./Aspnetcoreapp/resources:/app/Aspnetcoreapp/resources
       - ./Aspnetcoreapp/wwwroot:/app/Aspnetcoreapp/wwwroot
-      - ${APPDATA}\microsoft\UserSecrets\:/root/.microsoft/usersecrets
-      - ${USERPROFILE}\.aspnet\https:/root/.aspnet/https/
+      # - ${APPDATA}\microsoft\UserSecrets\:/root/.microsoft/usersecrets
+      # - ${USERPROFILE}\.aspnet\https:/root/.aspnet/https/
     environment:
       ASPNETCORE_URLS: "http://*:5000"
       ASPNETCORE_ENVIRONMENT: Development
