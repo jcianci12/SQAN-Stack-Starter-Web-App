@@ -1,8 +1,8 @@
 services:
   db:
     build: ./Db
-    ports:
-      - 1433:1433
+    # ports:
+    #   - 1433:1433
     volumes:
       - ./Db/data:/var/opt/mssql/data
     user: "0:0"
@@ -41,8 +41,8 @@ services:
     build: 
       context: ./ClientApp
       dockerfile: Dockerfile.prod
-    ports:
-      - "4200:4200"
+    # ports:
+    #   - "4200:4200"
 
     networks:
       - overlay
