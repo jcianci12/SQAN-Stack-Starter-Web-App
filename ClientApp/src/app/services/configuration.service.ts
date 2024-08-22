@@ -101,7 +101,7 @@ export class ConfigurationService {
     public baseUrl = environment.baseUrl || Utilities.baseUrl();
     public tokenUrl = environment.tokenUrl || environment.baseUrl || Utilities.baseUrl();
     public loginUrl = environment.loginUrl;
-    public fallbackBaseUrl = 'https://www.wehireit.com.au';
+    public fallbackBaseUrl = 'https://www.sqnapp.tekonline.com.au';
     // ***End of defaults***
 
     private _language: string|null = null;

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: true,
-  baseUrl:"https://www.wehireit.com.au",
+  baseUrl:"https://www.sqanapp.tekonline.com.au",
   tokenUrl:"",
   loginUrl:""
 };
