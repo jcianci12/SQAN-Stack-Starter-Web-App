@@ -1,0 +1,11 @@
+
+<div *ngIf="shouldShowLoginModal" class="modal fade login-control" bsModal #loginModal="bs-modal"
+  [config]="{backdrop: 'static'}" tabindex="-1">
+  <div class="modal-dialog modal-lg h-75 d-flex flex-column justify-content-center my-0">
+    <div class="modal-content">
+      <div class="modal-body">
+        <app-login #loginControl [isModal]=true></app-login>
+      </div>
+    </div>
+  </div>
+</div>

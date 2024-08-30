@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-lg  rounded border border-secondary" >
   <div class="container-fluid" >
-    <a class="navbar-brand" routerLink="/">{{appTitle}}</a>
+    <a class="navbar-brand" routerLink="/">{{apptitleService.appName}}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <span class="navbar-nav me-auto mb-2 mb-lg-0">
-        <ng-container *ngIf="!isUserLoggedIn">
+        <ng-container *ngIf="!authService.isLoggedIn">
           <span *ngIf="!router.isActive('/register',false)" class="navbar-nav mr-auto example-button-row pull-right">
             <ul class=" nav nav-pills ml-lg-2 flex-column flex-lg-row">
               <li class="nav-item">
@@ -25,22 +25,25 @@
             </ul>
           </span>
         </ng-container>
-        <ng-container *ngIf="isUserLoggedIn">
+        <ng-container *ngIf="authService?.currentUser?.fullName">
           
           <span class="nav-item active">
             <a class="nav-link" data-toggle="collapse" data-target="#navbarsExampleDefault" routerLink="/">Home </a>
           </span>
 
-          
+         
           
           
         </ng-container>
 
-      
+        <span class="nav-item">
+          <a class="nav-link" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            routerLink="/contact-us">Contact Us</a>
+        </span>
         <span class="nav-item active">
           <a class="nav-link" data-toggle="collapse" data-target="#navbarsExampleDefault" routerLink="/about">About</a>
         </span>
-        <app-personpill *ngIf="isUserLoggedIn" [userName]=userName></app-personpill>
+        <app-personpill *ngIf="authService.isLoggedIn" [userName]=authService.currentUser?.fullName></app-personpill>
         
 
       </span>

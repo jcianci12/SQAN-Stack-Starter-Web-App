@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.externalAuthService.authState.subscribe((user) => {
         if(user) {
           console.log(user)
-          this.externalLogin(user);
+          // this.externalLogin(user);
   
         }
       })
@@ -144,46 +144,46 @@ export class LoginComponent implements OnInit, OnDestroy {
         });
   }
 
-  externalLogin = async (user: SocialUser) => {
-    try {
-      this.showError = false;
-      const loggedInUser = await this.authService.externalLogin(user, 'api/account/externallogin').toPromise();
+  // externalLogin = async (user: SocialUser) => {
+  //   try {
+  //     this.showError = false;
+  //     const loggedInUser = await this.authService.externalLogin(user, 'api/account/externallogin').toPromise();
   
-      setTimeout(() => {
-        this.alertService.stopLoadingMessage();
-        this.isLoading = false;
-        this.reset();
+  //     setTimeout(() => {
+  //       this.alertService.stopLoadingMessage();
+  //       this.isLoading = false;
+  //       this.reset();
   
-        if (!this.isModal) {
-          this.alertService.showMessage('Login', `Welcome ${loggedInUser.userName}!`, MessageSeverity.success);
-        } else {
-          this.alertService.showMessage('Login', `Session for ${loggedInUser.userName} restored!`, MessageSeverity.success);
-          setTimeout(() => {
-            this.alertService.showStickyMessage('Session Restored', 'Please try your last operation again', MessageSeverity.default);
-          }, 500);
-          this.closeModal();
-        }
-      }, 500);
-    } catch (error) {
-      this.alertService.stopLoadingMessage();
+  //       if (!this.isModal) {
+  //         this.alertService.showMessage('Login', `Welcome ${loggedInUser.userName}!`, MessageSeverity.success);
+  //       } else {
+  //         this.alertService.showMessage('Login', `Session for ${loggedInUser.userName} restored!`, MessageSeverity.success);
+  //         setTimeout(() => {
+  //           this.alertService.showStickyMessage('Session Restored', 'Please try your last operation again', MessageSeverity.default);
+  //         }, 500);
+  //         this.closeModal();
+  //       }
+  //     }, 500);
+  //   } catch (error) {
+  //     this.alertService.stopLoadingMessage();
   
-      if (Utilities.checkNoNetwork(error)) {
-        this.alertService.showStickyMessage(Utilities.noNetworkMessageCaption, Utilities.noNetworkMessageDetail, MessageSeverity.error, error);
-        this.offerAlternateHost();
-      } else {
-        const errorMessage = Utilities.getHttpResponseMessage(error);
+  //     if (Utilities.checkNoNetwork(error)) {
+  //       this.alertService.showStickyMessage(Utilities.noNetworkMessageCaption, Utilities.noNetworkMessageDetail, MessageSeverity.error, error);
+  //       this.offerAlternateHost();
+  //     } else {
+  //       const errorMessage = Utilities.getHttpResponseMessage(error);
   
-        if (errorMessage) {
-          this.alertService.showStickyMessage('Unable to login', this.mapLoginErrorMessage(errorMessage), MessageSeverity.error, error);
-        } else {
-          this.alertService.showStickyMessage('Unable to login', 'An error occurred whilst logging in, please try again later.\nError: ' + Utilities.getResponseBody(error), MessageSeverity.error, error);
-        }
-      }
-      setTimeout(() => {
-        this.isLoading = false;
-      }, 500);
-    }
-  };
+  //       if (errorMessage) {
+  //         this.alertService.showStickyMessage('Unable to login', this.mapLoginErrorMessage(errorMessage), MessageSeverity.error, error);
+  //       } else {
+  //         this.alertService.showStickyMessage('Unable to login', 'An error occurred whilst logging in, please try again later.\nError: ' + Utilities.getResponseBody(error), MessageSeverity.error, error);
+  //       }
+  //     }
+  //     setTimeout(() => {
+  //       this.isLoading = false;
+  //     }, 500);
+  //   }
+  // };
   
 
   offerAlternateHost() {

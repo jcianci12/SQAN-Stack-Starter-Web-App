@@ -14,6 +14,31 @@ Just pull it down from git and run 👨‍💻
 
 docker-compose -f docker-compose.dev.yml up
 
+## The app has google auth out of the box, but you will need to supply your google auth client id and secret.
+
+The files you need to update are:
+appsettings.json:
+
+"Authentication": {
+  "Google": {
+    "ClientId": "{{your client id}}",
+    "ClientSecret": ""
+  }
+},
+
+and app.module.ts:
+
+providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '{{your client id}}', {
+              scopes: 'email',
+              // plugin_name: 'the name of the Google OAuth project you created'
+            }
+            )
+          },
+        ],
 
 ## Support
 

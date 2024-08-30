@@ -70,6 +70,7 @@ import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-s
 import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
 import { AlertdialogComponent } from './components/alertdialog/alertdialog.component';
 import { AboutComponent } from './components/about/about.component';
+import { ExternalAuthComponent } from './external-auth/external-auth.component';
 
 export function momentAdapterFactory() {
   return adapterFactory(moment);
@@ -120,6 +121,7 @@ export function momentAdapterFactory() {
     TemplatePipe,
     AlertdialogComponent,
     AboutComponent,
+    ExternalAuthComponent
   ],
   imports: [
     AppRoutingModule,

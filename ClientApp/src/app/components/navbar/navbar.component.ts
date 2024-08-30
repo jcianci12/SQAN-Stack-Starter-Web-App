@@ -5,6 +5,7 @@ import { Router, NavigationStart } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { AccountService } from '../../services/account.service';
 import { Permission } from '../../models/permission.model';
+import { AppTitleService } from 'src/app/services/app-title.service';
 
 @Component({
   selector: 'app-navbar',
@@ -15,11 +16,9 @@ export class NavbarComponent implements OnInit {
   
 
   @Input() appTitle: any;
-  @Input() isUserLoggedIn: any;
 
   @Input() notificationsTitle: any;
   @Input() newNotificationCount!: number;
-  @Input() userName: any;
 @Input() routerInput!:Router;
 
 
@@ -34,7 +33,8 @@ dataLoadingConsecutiveFailures = 0;
     private alertService: AlertService,
     public router:Router,
     private accountService: AccountService,
-    private authService:AuthService
+    public authService:AuthService,
+    public apptitleService:AppTitleService
 
   ) { console.log(this.routerInput)}
 

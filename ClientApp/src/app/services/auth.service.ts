@@ -15,11 +15,9 @@ import { AccessToken, LoginResponse } from '../models/login-response.model'
 import { User } from '../models/user.model'
 import { PermissionValues } from '../models/permission.model'
 import { EndpointBase } from '../api/endpoint-base.service'
-import { HttpClient, HttpErrorResponse } from '@angular/common/http'
 import { ApplicationUser } from '../api/Client'
 
-import { SocialAuthService, SocialUser } from "@abacritt/angularx-social-login";
-import { GoogleLoginProvider } from "@abacritt/angularx-social-login";
+import { GoogleLoginProvider, SocialAuthService } from "@abacritt/angularx-social-login";
 import { AuthResponseDto, ExternalAuthDto } from '../externalAuthDto.model'
 import { MatSnackBar } from '@angular/material/snack-bar'
 
@@ -27,9 +25,8 @@ import { MatSnackBar } from '@angular/material/snack-bar'
 export class AuthService {
 
   private authChangeSub = new Subject<boolean>();
-  private extAuthChangeSub = new Subject<SocialUser>();
-  public authChanged = this.authChangeSub.asObservable();
-  public extAuthChanged = this.extAuthChangeSub.asObservable();
+  // public authChanged = this.authChangeSub.asObservable();
+  // public extAuthChanged = this.extAuthChangeSub.asObservable();
   public isExternalAuth: boolean;
 
   public get loginUrl() {
@@ -45,49 +42,23 @@ export class AuthService {
   public reLoginDelegate!: () => void
 
   private previousIsLoggedInCheck = false
-  private loginStatus = new Subject<boolean>()
+  public loginStatus = new Subject<boolean>()
 
-  constructor(private http: HttpClient,
+  constructor(
     private router: Router,
     private oidcHelperService: OidcHelperService,
     public configurations: ConfigurationService,
     private localStorage: LocalStoreManager,
-    private externalAuthService: SocialAuthService,
-    private configservice: ConfigurationService, private snackbar: MatSnackBar
+    // private externalauthservice:SocialAuthService
   ) {
     this.initializeLoginStatus()
   }
 
-  public signInWithGoogle = () => {
-    this.externalAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
-  }
+  // public signInWithGoogle = () => {
+  //   this.externalAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  // }
 
-  public signOutExternal = () => {
-    this.externalAuthService.signOut();
-  }
 
-  public externalLogin = (user: SocialUser, route: string) => {
-    if (this.isLoggedIn || user.id == this.currentUser?.id) {
-      return;
-    }
-    this.extAuthChangeSub.next(user);
-    this.isExternalAuth = true;
-    const externalAuth: ExternalAuthDto = {
-      provider: user.provider,
-      idToken: user.idToken
-    }
-
-    return this.http.post<LoginResponse>(this.createCompleteRoute(route, this.configservice.baseUrl), externalAuth)
-      .pipe(map((resp) => {
-        this.sendAuthStateChangeNotification(!!resp.access_token);
-        return this.processLoginResponse(resp, false);
-      }))
-
-  }
-
-  private createCompleteRoute = (route: string, envAddress: string) => {
-    return `${envAddress}/${route}`;
-  }
   public sendAuthStateChangeNotification = (isAuthenticated: boolean) => {
     this.authChangeSub.next(isAuthenticated);
   }
@@ -203,7 +174,7 @@ export class AuthService {
     })
   }
 
-  private processLoginResponse(response: LoginResponse, rememberMe?: boolean) {
+  public processLoginResponse(response: LoginResponse, rememberMe?: boolean) {
     console.log('processing login response', response)
     const accessToken = response.access_token
 
@@ -299,17 +270,17 @@ export class AuthService {
     this.localStorage.deleteData(DBkeys.TOKEN_EXPIRES_IN)
     this.localStorage.deleteData(DBkeys.USER_PERMISSIONS)
     this.localStorage.deleteData(DBkeys.CURRENT_USER)
-    // this.externalAuthService.authState.pipe(take(1)).subscribe(a => {
+    // this.externalauthservice.authState.pipe(take(1)).subscribe(a => {
     //   if (a) {
-    //     this.externalAuthService.signOut();
+    //     this.externalauthservice.signOut();
 
     //   }
     // })
-    const a = await firstValueFrom(this.externalAuthService.authState)
-    if (a) {
-      this.externalAuthService.signOut();
+    // const a = await firstValueFrom(this.externalauthservice.authState)
+    // if (a) {
+    //   this.externalauthservice.signOut();
 
-    }
+    // }
     this.configurations.clearLocalChanges()
     this.reevaluateLoginStatus()
   }

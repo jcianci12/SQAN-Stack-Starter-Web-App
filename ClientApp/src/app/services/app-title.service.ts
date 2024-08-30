@@ -13,7 +13,7 @@ import { Utilities } from './utilities';
 export class AppTitleService {
 
     sub: Subscription;
-    appName: string ="";
+    appName: string ="SQAN 🦢 Stack";
 
     constructor(private titleService: Title, private router: Router) {
         this.sub = this.router.events.pipe(
