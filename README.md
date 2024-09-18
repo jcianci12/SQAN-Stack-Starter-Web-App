@@ -17,7 +17,7 @@ docker-compose -f docker-compose.dev.yml up
 ## The app has google auth out of the box, but you will need to supply your google auth client id and secret.
 
 The files you need to update are:
-appsettings.json:
+appsettings.json (Sits inside the aspnetcore project):
 
 "Authentication": {
   "Google": {
@@ -26,7 +26,7 @@ appsettings.json:
   }
 },
 
-and app.module.ts:
+and app.module.ts (sits at the base of the angular client):
 
 providers: [
           {
