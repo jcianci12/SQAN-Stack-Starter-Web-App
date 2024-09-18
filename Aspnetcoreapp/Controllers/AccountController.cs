@@ -79,7 +79,7 @@ namespace Aspnetcoreapp.Controllers
         {
             var payload = await _jwtHandler.VerifyGoogleToken(externalAuth);
             if (payload == null)
-                return BadRequest("Invalid External Authentication.");
+                return BadRequest("Invalid External Authentication. Check the auth client id in appsettings.json (server) and app.module.ts (Client) both match. ");
 
             var info = new UserLoginInfo(externalAuth.Provider, payload.Subject, externalAuth.Provider);
 

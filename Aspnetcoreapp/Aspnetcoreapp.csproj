@@ -12,6 +12,7 @@
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
     <UserSecretsId>6268a9cf-d285-4f36-a4c4-630983f1ea66</UserSecretsId>
     <Configurations>Debug;Release;dockersql;Development</Configurations>
+    <StartupObject>Aspnetcoreapp.Program</StartupObject>
     
   </PropertyGroup>
 

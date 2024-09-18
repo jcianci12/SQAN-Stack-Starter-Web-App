@@ -173,15 +173,21 @@ export class ExternalAuthComponent {
   externalLogin = async (user: SocialUser) => {
     try {
       const loggedInUser = await this.handleExternalLoginRequest(user, 'api/account/externallogin').toPromise();
-
+  
       setTimeout(() => {
-
         this.alertService.showMessage('Login', `Welcome ${loggedInUser.userName}!`, MessageSeverity.success);
         this.loginModal?.hide();
-
-
       }, 10);
     } catch (error) {
+      this.alertService.showDialog(error.error, DialogType.alert,null,null,null);
+
+      if (error.status === 400) {
+        const errorMessage = error.error || 'Error occurred. Please try again.';
+        this.alertService.showMessage('Login', errorMessage, MessageSeverity.error);
+      } else {
+        this.alertService.showMessage('Login', error.message, MessageSeverity.error);
+      }
+  
       this.alertService.stopLoadingMessage();
     }
   };
